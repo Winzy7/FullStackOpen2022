@@ -19,35 +19,45 @@ const App = () => {
     </button>
   );
 
+  const Buttons = () => (
+    <div>
+    <Button handleClick = {() => setValue(good, setGood)} text = "good"/>
+    <Button handleClick = {() => setValue(neutral, setNeutral)} text = "neutral"/>
+    <Button handleClick = {() => setValue(bad, setBad)} text = "bad"/>
+    </div>
+  )
+
   const StatisticLine = (props) => {
     return (
-      <div>{props.text} {props.value}{props.extratext}</div>
+      <tr>
+        <td>{props.text}</td>
+        <td>{props.value}{props.extratext}</td>
+      </tr>
     );  
   }
 
-  const Statistics = (props) => {
-    if (props.total == 0)
+  const Statistics = () => {
+    const total = good + neutral + bad;
+    if (total == 0)
       return <div>No feedback given</div>
     return (
-    <div>
-      <StatisticLine text = "good" value = {props.good}/>
-      <StatisticLine text = "neutral" value = {props.neutral}/>
-      <StatisticLine text = "bad" value = {props.bad}/>
-      <StatisticLine text = "all" value = {props.total}/>
-      <StatisticLine text = "average" value = {(props.good + props.neutral + props.bad) / 3}/>
-      <StatisticLine text = "positive" value = {props.good/(props.good + props.neutral + props.bad) * 100} extratext = "%"/>
-    </div>
+      <table><tbody>
+      <StatisticLine text = "good" value = {good}/>
+      <StatisticLine text = "neutral" value = {neutral}/>
+      <StatisticLine text = "bad" value = {bad}/>
+      <StatisticLine text = "all" value = {total}/>
+      <StatisticLine text = "average" value = {(good - bad) / (good + neutral + bad)}/>
+      <StatisticLine text = "positive" value = {good/(good + neutral + bad) * 100} extratext = "%"/>
+      </tbody></table>
     );
   }
 
   return (
     <div>
       <p><b><font size = "+3">give feedback</font></b></p>
-      <Button handleClick = {() => setValue(good, setGood)} text = "good"/>
-      <Button handleClick = {() => setValue(neutral, setNeutral)} text = "neutral"/>
-      <Button handleClick = {() => setValue(bad, setBad)} text = "bad"/>
+      <Buttons/>
       <p><b><font size = "+3">statistics</font></b></p>
-      <Statistics good = {good} bad = {bad} neutral = {neutral} total = {good + neutral + bad}/>
+      <Statistics/>
     </div>
   );
 }
