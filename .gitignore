@@ -1,3 +1,6 @@
 0.4 code.txt
 0.5 code.txt
 0.6 code.txt
+*
+!.gitignore
+!*/part1/unicafe/src/*
