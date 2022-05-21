@@ -4,3 +4,4 @@
 *
 !.gitignore
 !*/part1/unicafe/src/*
+!*/part1/anecdotes/src/*
