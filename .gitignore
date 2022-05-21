@@ -2,6 +2,10 @@
 0.5 code.txt
 0.6 code.txt
 /*
-!.gitignore
-!/part1/unicafe/src/*
-!/part1/*
+!/part1
+/part1/*
+!/part1/anecdotes
+/part1/anecdotes/*
+!/part1/anecdotes/src
+/part1/anecdotes/src/*
+!/part1/anecdotes/src/App.js
