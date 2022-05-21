@@ -3,5 +3,5 @@
 0.6 code.txt
 /*
 !.gitignore
-!*/part1/unicafe/src/*
-!/part1/anecdotes/src/*
+!/part1/unicafe/src/*
+!/part1/*
