@@ -16,13 +16,6 @@ const setValue = (value, set, newValue) => {
   set (value = newValue);
 }
 
-const Increment = (array, index) => {
-  array[index] += 1;
-  console.log(array[index])
-}
-//hello github desktop????
-//ok lets see if this works
-
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -36,17 +29,22 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
   const votes = Array(anecdotes.length).fill(0);
-  const copy = {...votes};
-  // console.log(votes);
-  // console.log(selected);
-  // console.log(copy);
-console.log(copy[selected])
-    return (
+  const [vote, setVote] = useState(votes);
+  console.log(vote)
+  console.log(vote[selected])
+
+  const incrementVotes = () => {
+    const copy = {...vote};
+    copy[selected] += 1;
+    return setValue(vote, setVote, copy);
+  }
+
+  return (
     <div>
       {anecdotes[selected]} <br/>
-      {copy[selected]} <br/>
+      {vote[selected]} <br/>
       <Button handleClick = {() => setValue(selected, setSelected, getRandomInt(anecdotes.length))} text = "Next Anecdote"/>
-      <Button handleClick = {() => Increment(copy, selected)} text = "Vote"/>
+      <Button handleClick = {() => incrementVotes()} text = "Vote"/>
     </div>
   )
 }
