@@ -1,3 +1,4 @@
+import { getSpaceUntilMaxLength } from '@testing-library/user-event/dist/utils';
 import { useState } from 'react'
 
 
@@ -39,12 +40,24 @@ const App = () => {
     return setValue(vote, setVote, copy);
   }
 
+  const mostVoted = () => {
+    console.log(vote[0])
+    var largestIndex = 0;
+    for (var i = 0; i < anecdotes.length; i += 1) {
+      if (vote[i] > vote[largestIndex]) largestIndex = i;
+    }
+    return largestIndex;
+  }
+
   return (
     <div>
+      <b><font size = "+2">Anecdote of the day</font></b> <br/> <br/>
       {anecdotes[selected]} <br/>
-      {vote[selected]} <br/>
+      has {vote[selected]} votes <br/>
       <Button handleClick = {() => setValue(selected, setSelected, getRandomInt(anecdotes.length))} text = "Next Anecdote"/>
       <Button handleClick = {() => incrementVotes()} text = "Vote"/>
+      <br/><br/><b><font size = "+2">Anecdote with the most votes</font></b> <br/> <br/>
+      {anecdotes[mostVoted()]}
     </div>
   )
 }
