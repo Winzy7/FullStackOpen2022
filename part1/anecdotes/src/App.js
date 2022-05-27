@@ -42,8 +42,8 @@ const App = () => {
 
   const mostVoted = () => {
     console.log(vote[0])
-    var largestIndex = 0;
-    for (var i = 0; i < anecdotes.length; i += 1) {
+    let largestIndex = 0;
+    for (let i = 0; i < anecdotes.length; i += 1) {
       if (vote[i] > vote[largestIndex]) largestIndex = i;
     }
     return largestIndex;
